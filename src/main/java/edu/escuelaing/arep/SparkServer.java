@@ -13,12 +13,12 @@ public class SparkServer {
             Double value = Double.valueOf(req.queryParams("value"));
             System.out.println(Math.asin(3.1416));
             res.type("application/json");
-            return (new Gson()).toJson(Calculator.asin(value));
+            return (new Gson()).toJson("{\"res\":" + Calculator.asin(value) +"}");
         });
          get("/log", (req, res) ->{
              Double value = Double.valueOf(req.queryParams("value"));
              res.type("application/json");
-             return (new Gson()).toJson(Calculator.log(value));
+             return (new Gson()).toJson("{\"res\":" + Calculator.log(value) +"}");
          });
     }
 
