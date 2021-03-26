@@ -1,6 +1,8 @@
 package edu.escuelaing.arep.calculator;
 
-public class Calculator {
+import java.io.Serializable;
+
+public class Calculator implements Serializable {
 
     public static Double asin(Double value){
         return Double.valueOf(Math.asin(value));

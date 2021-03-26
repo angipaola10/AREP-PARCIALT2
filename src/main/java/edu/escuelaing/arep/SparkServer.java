@@ -2,6 +2,7 @@ package edu.escuelaing.arep;
 
 import com.google.gson.Gson;
 import edu.escuelaing.arep.calculator.Calculator;
+import edu.escuelaing.arep.model.Operation;
 
 import static spark.Spark.*;
 
@@ -11,14 +12,13 @@ public class SparkServer {
         port(getPort());
         get("/asin", (req, res) ->{
             Double value = Double.valueOf(req.queryParams("value"));
-            System.out.println(Math.asin(3.1416));
             res.type("application/json");
-            return (new Gson()).toJson("{\"res\":" + Calculator.asin(value) +"}");
+            return (new Gson()).toJson(new Operation("asin", value, Calculator.asin(value).toString()));
         });
          get("/log", (req, res) ->{
              Double value = Double.valueOf(req.queryParams("value"));
              res.type("application/json");
-             return (new Gson()).toJson("{\"res\":" + Calculator.log(value) +"}");
+             return (new Gson()).toJson(new Operation("log", value, Calculator.log(value).toString()));
          });
     }
 
